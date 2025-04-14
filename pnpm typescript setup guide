@@ -1,0 +1,86 @@
+# Setting up TypeScript with Node.js using pnpm - Step-by-Step
+
+**1. Prerequisites:**
+
+* Node.js and pnpm installed.
+* Text Editor/IDE (VS Code recommended).
+
+**2. Create Project Directory:**
+
+```bash
+mkdir my-typescript-node-project
+cd my-typescript-node-project
+
+3. Initialize pnpm:
+
+Bash:
+pnpm init -y
+
+4. Install TypeScript:
+
+Bash:
+pnpm add typescript --save-dev
+5. Initialize TypeScript Configuration:
+
+Bash:
+npx tsc --init
+
+6. Configure tsconfig.json:
+
+JSON
+
+{
+  "compilerOptions": {
+    "target": "es2020",
+    "module": "commonjs",
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "esModuleInterop": true,
+    "strict": true,
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "resolveJsonModule": true
+  },
+  "include": ["src/**/*"]
+}
+
+7. Create src Directory and TypeScript File:
+
+Bash:
+
+mkdir src
+touch src/index.ts
+src/index.ts:
+
+TypeScript
+
+function greet(name: string): string {
+  return `Hello, ${name}!`;
+}
+
+const message: string = greet("TypeScript Node.js");
+console.log(message);
+
+8. Add build and start scripts to package.json
+
+JSON
+
+"scripts": {
+  "build": "tsc",
+  "start": "node dist/index.js",
+  "dev": "tsc --watch & nodemon dist/index.js"
+},
+
+9. Compile and Run:
+
+Bash
+
+pnpm run build
+pnpm start
+pnpm run dev # for development mode with nodemon.
+
+10. Add nodemon (Optional, for Development):
+
+Bash
+
+pnpm add nodemon --save-dev
